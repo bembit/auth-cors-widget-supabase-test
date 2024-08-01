@@ -1,14 +1,10 @@
-// src/app.ts
-
 import express from 'express';
-import authRoutes from './routes/authRoutes'; // Ensure this path is correct
+import bodyParser from 'body-parser';
+import routes from './routes';
 
 const app = express();
 
-// Middleware to parse JSON bodies
-app.use(express.json());
-
-// Define routes
-app.use('/api/auth', authRoutes);
+app.use(bodyParser.json());
+app.use('/api', routes);
 
 export default app;
