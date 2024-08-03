@@ -14,7 +14,10 @@ export class AuthController {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    user = userRepo.create({ username, password });
+    // Hash the password before saving
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    user = userRepo.create({ username, password: hashedPassword });
     await userRepo.save(user);
 
     return res.status(201).json({ message: 'User registered' });
@@ -29,6 +32,7 @@ export class AuthController {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
+    // Compare the entered password with the hashed password in the database
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(400).json({ message: 'Invalid credentials' });
