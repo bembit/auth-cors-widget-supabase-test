@@ -1,22 +1,20 @@
 ### **Step 1: Project Setup**
 
-#### **Backend Setup with Node.js and TypeScript**
+`"dev": "ts-node-dev --respawn --transpile-only src/server.ts",`
 
-1. **Initialize the Project:**
-   - Create a new Node.js project with TypeScript.
+npm run dev
 
-   ```bash
-   mkdir appointment-scheduler
-   cd appointment-scheduler
-   npm init -y
-   npx tsc --init
-   ```
+testing supabase
 
-2. **Install Dependencies:**
+http://localhost:3000/api/auth/register
+http://localhost:3000/api/auth/login
 
-   - Install necessary backend packages.
+extending user entity later
 
-   ```bash
-   npm install express pg typeorm bcryptjs jsonwebtoken reflect-metadata
-   npm install -D typescript ts-node @types/express @types/bcryptjs @types/jsonwebtoken
-   ```
+needs 2nd user model.
+- one provider and consumer
+- one provider can have many consumers
+- one consumer can have many providers
+- one provider can have many appointments
+- one appointment can have many providers
+- one appointment can have many consumers
