@@ -30,7 +30,8 @@
 //     }
 // }
 
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { UserPreference } from './UserPreference';
 
 @Entity()
 export class User {
@@ -42,4 +43,7 @@ export class User {
 
   @Column()
   password!: string;
+
+  @OneToMany(() => UserPreference, preference => preference.user)
+  preferences!: UserPreference[];
 }
