@@ -10,6 +10,9 @@
     "emitDecoratorMetadata": true,
     "outDir": "./dist"
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "express.d.ts" // Or "types/express.d.ts" depending on where you placed it
+],
   "exclude": ["node_modules"]
 }
