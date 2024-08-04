@@ -2,9 +2,14 @@
 
 `"dev": "ts-node-dev --respawn --transpile-only src/server.ts",`
 
+## todo
+1. clean up a bit
+2. add widget test
+
 npm run dev
 
 testing supabase
+
 
 http://localhost:3000/api/auth/register
 http://localhost:3000/api/auth/login
