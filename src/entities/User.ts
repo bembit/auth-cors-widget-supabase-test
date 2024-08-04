@@ -1,8 +1,3 @@
-// // src/entities/User.ts
-
-// import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert } from 'typeorm';
-// import bcrypt from 'bcryptjs';
-
 // @Entity()
 // export class User {
 //     @PrimaryGeneratedColumn('uuid')
