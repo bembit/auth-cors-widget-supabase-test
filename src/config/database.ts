@@ -1,7 +1,6 @@
 import { DataSource } from 'typeorm';
-import 'dotenv/config';  // To load the .env variables
+import 'dotenv/config';  // load the .env variables
 import { User } from '../entities/User';
-// import { Appointment } from '../entities/Appointment';
 import { UserPreference } from '../entities/UserPreference';
 
 const AppDataSource = new DataSource({

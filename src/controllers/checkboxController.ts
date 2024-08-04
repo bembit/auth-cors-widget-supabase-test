@@ -4,10 +4,9 @@ import { UserPreference } from '../entities/UserPreference';
 
 export class CheckboxController {
     async getCheckboxState(req: Request, res: Response) {
-        // const userRepo = AppDataSource.getRepository(User);
         const preferenceRepo = AppDataSource.getRepository(UserPreference);
 
-        const userId = req.user.id; // Assuming user ID is available after authentication
+        const userId = req.user.id;
         const preference = await preferenceRepo.findOne({ where: { user: { id: userId } } });
 
         if (!preference) {
@@ -18,10 +17,9 @@ export class CheckboxController {
     }
 
     async saveCheckboxState(req: Request, res: Response) {
-        // const userRepo = AppDataSource.getRepository(User);
         const preferenceRepo = AppDataSource.getRepository(UserPreference);
 
-        const userId = req.user.id; // Assuming user ID is available after authentication
+        const userId = req.user.id;
         const { isChecked } = req.body;
 
         let preference = await preferenceRepo.findOne({ where: { user: { id: userId } } });

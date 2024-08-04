@@ -11,6 +11,7 @@ router.post('/login', authController.login);
 router.post('/register', authController.register);
 
 // Protected routes
+// split this too
 router.get('/checkbox-state', authMiddleware, checkboxController.getCheckboxState);
 router.post('/checkbox-state', authMiddleware, checkboxController.saveCheckboxState);
 
