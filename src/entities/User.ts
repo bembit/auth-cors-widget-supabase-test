@@ -1,20 +1,3 @@
-// @Entity()
-// export class User {
-//     @PrimaryGeneratedColumn('uuid')
-//     id!: string;
-
-//     @Column({ unique: true })
-//     username!: string;
-
-//     @Column({ unique: true })
-//     email!: string;
-
-//     @Column()
-//     password!: string;
-
-//     @CreateDateColumn()
-//     createdAt!: Date;
-
 //     @BeforeInsert()
 //     async hashPassword() {
 //         this.password = await bcrypt.hash(this.password, 10);
@@ -25,20 +8,28 @@
 //     }
 // }
 
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn } from 'typeorm';
 import { UserPreference } from './UserPreference';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id!: number;
+	@PrimaryGeneratedColumn()
+	id!: number;
 
-  @Column({ unique: true })
-  username!: string;
+	@Column({ unique: true })
+	username!: string;
 
-  @Column()
-  password!: string;
+	// could generate a random email if not provided
+	// swap to username anyway
+	@Column({ unique: false, default: 'hello@example.com' })
+	email!: string;
 
-  @OneToMany(() => UserPreference, preference => preference.user)
-  preferences!: UserPreference[];
+	@Column()
+	password!: string;
+
+	@CreateDateColumn()
+    createdAt!: Date;
+
+	@OneToMany(() => UserPreference, preference => preference.user)
+	preferences!: UserPreference[];
 }

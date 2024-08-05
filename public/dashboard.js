@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Fetch the checkbox state from the server
     try {
-        const response = await fetch('http://localhost:3000/api/auth/checkbox-state', {
+        const response = await fetch('http://localhost:3000/api/checkbox/checkbox-state', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Save the checkbox state to the server
     document.getElementById('save-button').addEventListener('click', async function () {
         try {
-            const response = await fetch('http://localhost:3000/api/auth/checkbox-state', {
+            const response = await fetch('http://localhost:3000/api/checkbox/checkbox-state', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
