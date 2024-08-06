@@ -10,6 +10,7 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn } from 'typeorm';
 import { UserPreference } from './UserPreference';
+import { UserCorsPreference } from './UserCorsPreference';
 
 @Entity()
 export class User {
@@ -32,4 +33,11 @@ export class User {
 
 	@OneToMany(() => UserPreference, preference => preference.user)
 	preferences!: UserPreference[];
+
+	@OneToMany(() => UserCorsPreference, preference => preference.user)
+	corsPreferences!: UserCorsPreference[];
 }
+
+// @OneToMany(() => UserCorsPreference, preference => preference.user)
+// corsPreferences: UserCorsPreference[] = [];
+
