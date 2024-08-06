@@ -10,3 +10,22 @@ declare module 'express' {
 		user?: any;
 	}
 }
+
+// import { Request } from 'express';
+// import { CustomJwtPayload } from './CustomJWTPayload';
+
+// declare module 'express' {
+//     interface Request {
+//         user?: CustomJwtPayload; // Replace 'any' with your custom type
+//     }
+// }
+
+
+// src/types/express.d.ts
+// import { User } from '../entities/User'; // Adjust path to your User entity
+
+// declare module 'express-serve-static-core' {
+//   interface Request {
+//     user?: User; // Adjust the type as needed, could be an object or just an ID
+//   }
+// }

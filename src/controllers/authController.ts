@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { AppDataSource } from '../config/database';
 import { User } from '../entities/User';
 import { UserPreference } from '../entities/UserPreference';
+import { UserCorsPreference } from '../entities/UserCorsPreference';
 
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -10,6 +11,7 @@ export class AuthController {
 		const { username, password } = req.body;
 		const userRepo = AppDataSource.getRepository(User);
 		const preferenceRepo = AppDataSource.getRepository(UserPreference);
+		const corsRepo = AppDataSource.getRepository(UserCorsPreference);
 
 		// Check if the user already exists
 		let user = await userRepo.findOne({ where: { username } });
@@ -28,6 +30,9 @@ export class AuthController {
 		// Create a default UserPreference for the new user
 		const preferences = preferenceRepo.create({ user });
 		await preferenceRepo.save(preferences);
+
+		const defaultCorsPreference = corsRepo.create({ domain: 'http://localhost:3000', user });
+		await corsRepo.save(defaultCorsPreference);
 
 		return res.status(201).json({ message: 'User registered' });
 	}
