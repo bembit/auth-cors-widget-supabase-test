@@ -11,11 +11,11 @@ const app = express();
 app.use(bodyParser.json());
 
 // Use the authentication middleware globally
-app.use(authMiddleware);
+// app.use(authMiddleware);
 
 // Use the dynamic CORS middleware
 // keep global for test purposes
-app.use(dynamicCorsMiddleware);
+// app.use(dynamicCorsMiddleware);
 
 app.use('/api', routes);
 
