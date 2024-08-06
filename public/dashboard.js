@@ -49,28 +49,62 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     });
 
+    // document.getElementById('add-domain-button').addEventListener('click', async () => {
+    //     const newDomain = document.getElementById('new-domain').value;
+      
+    //     const response = await fetch('/api/cors/cors-preferences', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `Bearer ${token}`, // Include JWT token here
+    //       },
+    //       body: JSON.stringify({ domain: newDomain }),
+    //     });
+      
+    //     const data = await response.json();
+    //     if (response.ok) {
+    //       // Update the UI with the new domain
+    //     } else {
+    //       console.error('Failed to add domain:', data.message);
+    //     }
+    // });
+      
     document.getElementById('add-domain-button').addEventListener('click', async () => {
-        const newDomain = document.getElementById('new-domain').value;
-      
-        const response = await fetch('/api/cors-preferences', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`, // Include JWT token here
-          },
-          body: JSON.stringify({ domain: newDomain }),
-        });
-      
-        const data = await response.json();
-        if (response.ok) {
-          // Update the UI with the new domain
-        } else {
-          console.error('Failed to add domain:', data.message);
+        const newDomainInput = document.getElementById('new-domain');
+        const newDomain = newDomainInput.value.trim();
+    
+        if (!newDomain) {
+            alert('Please enter a domain.');
+            return;
+        }
+    
+        try {
+            const response = await fetch('/api/cors/cors-preferences', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`, // Ensure `token` is defined and valid
+                },
+                body: JSON.stringify({ domain: newDomain }),
+            });
+    
+            const data = await response.json();
+            if (response.ok) {
+                // Update the UI with the new domain
+                // For example, refresh the list of domains or append the new domain to a list
+                newDomainInput.value = ''; // Clear input field
+                console.log('Domain added successfully:', data);
+                // Optionally update the UI here
+            } else {
+                console.error('Failed to add domain:', data.message);
+                alert(`Error: ${data.message}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An unexpected error occurred. Please try again later.');
         }
     });
-      
-    // Similar logic for deleting domains...
-      
+
 
     // Logout
     document.getElementById('logout-button').addEventListener('click', function () {

@@ -6,6 +6,7 @@ export class UserCorsPreference {
   @PrimaryGeneratedColumn()
   id!: number;
 
+  // check modified value while still running localhost on 3000
   @Column({ default: 'http://localhost:3000' })
   domain!: string;
 
