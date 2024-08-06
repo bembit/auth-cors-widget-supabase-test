@@ -49,26 +49,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     });
 
-    // document.getElementById('add-domain-button').addEventListener('click', async () => {
-    //     const newDomain = document.getElementById('new-domain').value;
-      
-    //     const response = await fetch('/api/cors/cors-preferences', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer ${token}`, // Include JWT token here
-    //       },
-    //       body: JSON.stringify({ domain: newDomain }),
-    //     });
-      
-    //     const data = await response.json();
-    //     if (response.ok) {
-    //       // Update the UI with the new domain
-    //     } else {
-    //       console.error('Failed to add domain:', data.message);
-    //     }
-    // });
-      
+    // inprog with ui
     document.getElementById('add-domain-button').addEventListener('click', async () => {
         const newDomainInput = document.getElementById('new-domain');
         const newDomain = newDomainInput.value.trim();

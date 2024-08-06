@@ -5,6 +5,7 @@ import corsRoutes from './corsRoutes';
 
 const router = Router();
 
+// middleware could be used here too
 router.use('/auth', authRoutes);
 router.use('/checkbox', checkboxRoutes);
 router.use('/cors', corsRoutes);

@@ -8,5 +8,4 @@ router.post('/login', authController.login);
 router.post('/register', authController.register);
 
 // Protected routes
-// split this too
 export default router;
